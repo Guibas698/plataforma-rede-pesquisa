@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -22,7 +23,7 @@ const resumoCadastro: ResumoCadastro = {
   tipo: "Usuário cadastrado",
 };
 
-export default function CadastroSucessoPage() {
+function CadastroSucessoContent() {
   const searchParams = useSearchParams();
   const candidato = searchParams.get("candidato");
 
@@ -125,6 +126,26 @@ export default function CadastroSucessoPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function CadastroSucessoPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-slate-50 px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
+            <section className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm sm:p-8">
+              <p className="text-sm font-medium text-slate-500">
+                Carregando...
+              </p>
+            </section>
+          </div>
+        </main>
+      }
+    >
+      <CadastroSucessoContent />
+    </Suspense>
   );
 }
 
