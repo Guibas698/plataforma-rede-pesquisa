@@ -1,0 +1,36 @@
+# Secrets / ambientes
+.env
+.env.*
+!.env.example
+
+# Arquivos auxiliares
+*.txt
+
+# Backend local sensível
+application-dev.yml
+**/application-dev.yml
+**/src/main/resources/application-dev.yml
+
+# Java / Maven
+**/target/
+*.class
+
+# Node / Next
+**/node_modules/
+**/.next/
+**/out/
+**/build/
+**/.vercel/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db

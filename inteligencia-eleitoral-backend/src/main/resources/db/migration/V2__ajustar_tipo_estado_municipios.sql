@@ -1,0 +1,2 @@
+ALTER TABLE municipios
+ALTER COLUMN estado TYPE VARCHAR(2);
