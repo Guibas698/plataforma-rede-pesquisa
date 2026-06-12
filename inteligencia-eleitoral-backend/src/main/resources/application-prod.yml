@@ -31,3 +31,7 @@ app:
 
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS}
+
+  master:
+    email: ${MASTER_ADMIN_EMAIL:admin@mapaeleitoral.com}
+    password: ${MASTER_ADMIN_PASSWORD}
