@@ -21,3 +21,7 @@ logging:
   level:
     root: info
     org.hibernate.SQL: off
+
+app:
+  frontend:
+    url: ${FRONTEND_URL}

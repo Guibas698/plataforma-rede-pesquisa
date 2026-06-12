@@ -30,6 +30,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
 import com.mapaeleitoral.candidato.dto.LiderPromovidoResponse;
 import com.mapaeleitoral.usuario.enums.PapelUsuario;
@@ -61,7 +62,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CandidatoService {
 
-    private static final String URL_FRONTEND_CADASTRO = "http://localhost:3000/cadastro/";
+    @Value("${app.frontend.url:http://localhost:3000}")
+    private String frontendUrl;
 
     private final UsuarioRepository usuarioRepository;
     private final CandidatoRepository candidatoRepository;
@@ -644,7 +646,7 @@ public CandidatoLinkResponse obterLink() {
     );
 
     String codigo = linkAtivo.getCodigo();
-    String urlCompleta = URL_FRONTEND_CADASTRO + codigo;
+    String urlCompleta = frontendUrl.replaceAll("/$", "") + "/cadastro/" + codigo;
 
     Long cadastrosHoje = apoiadores.stream()
             .filter(apoiador -> apoiador.getCriadoEm() != null)
